@@ -55,11 +55,14 @@ var _customTypes = [
 var _dreamHelper = {
   chance: chance,
   oneOf: function (collection) {
-    if(!collection)
-      console.warn("warnning: oneOf() need an array or string argument");
-    else if(!collection.length)
-      console.warn("warnning: oneOf() string or array should not be empty");
-      
+    var type = typeof collection;
+    var typeValidate = (type !== 'string' && type !== 'object');
+
+    if(!collection || typeValidate)
+      console.warn("warning: oneOf() need an Array, Object or String argument");
+    else if(!Object.keys(collection).length)
+      console.warn("warning: oneOf() Array, Object or String shouldn't be empty");
+
     return _.sample(collection);
   }
 };
