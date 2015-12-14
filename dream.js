@@ -55,6 +55,11 @@ var _customTypes = [
 var _dreamHelper = {
   chance: chance,
   oneOf: function (collection) {
+    if(!collection)
+      console.warn("warnning: oneOf() need an array or string argument");
+    else if(!collection.length)
+      console.warn("warnning: oneOf() string or array should not be empty");
+      
     return _.sample(collection);
   }
 };
@@ -255,7 +260,6 @@ function Dream() {
   var addOrReplace = function addOrReplace(collection, item) {
     var
       index;
-
     index = _.indexOf(collection, _.find(collection, { name: item.name }));
     if (index >= 0) {
       collection.splice(index, 1, item);
