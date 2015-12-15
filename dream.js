@@ -60,7 +60,7 @@ var _dreamHelper = {
 
     if(!collection || typeValidate)
       console.warn("warning: oneOf() need an Array, Object or String argument");
-    else if(!Object.keys(collection).length)
+    else if(!_.keys(collection).length)
       console.warn("warning: oneOf() Array, Object or String shouldn't be empty");
 
     return _.sample(collection);
